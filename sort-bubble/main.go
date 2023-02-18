@@ -3,12 +3,34 @@ package main
 import "fmt"
 
 func main() {
+	// sort int
 	// prepare the int array
 	nums := []int{6, 9, 1, 2, 13, 66, 3, 4, 9}
 
 	// count the index
 	n := len(nums) - 1
 
+	// sort
+	sortArr[int](n, nums)
+
+	// print
+	fmt.Println(nums)
+
+	// sort string
+	// prepare the int array
+	strs := []string{"vcfgdf", "asdasda", "123asfdf", "xtyrhrt", "dtfgdfgh"}
+
+	// count the index
+	n = len(strs) - 1
+
+	// sort
+	sortArr[string](n, strs)
+
+	// print
+	fmt.Println(strs)
+}
+
+func sortArr[T int | string](n int, arr []T) (s []T) {
 	// iterates the array
 	for i := 0; i <= n; i++ {
 		// for optimized if the array already sorted
@@ -19,9 +41,9 @@ func main() {
 		// Basically, bubble-sort will compare the current and next index value
 		// and swap if the current more than next index value
 		for j := 0; j < n-i; j++ {
-			if nums[j] > nums[j+1] {
+			if arr[j] > arr[j+1] {
 				isSwap = true
-				nums[j], nums[j+1] = nums[j+1], nums[j]
+				arr[j], arr[j+1] = arr[j+1], arr[j]
 			}
 		}
 
@@ -31,6 +53,5 @@ func main() {
 		}
 	}
 
-	// print
-	fmt.Println(nums)
+	return
 }
