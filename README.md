@@ -8,4 +8,5 @@ Just for my personal collections.
 4. Split Number - [main.go](split-numbers/main.go)
 5. String to Digit - [main.go](str-to-digit/main.go)
 6. String to Numbers - [main.go](str-to-numbers/main.go)
-7. Uppercase - [main.go](uppercase/main.go)
+7. Swap Array - [main.go](swap-array/main.go)
+8. Uppercase - [main.go](uppercase/main.go)
