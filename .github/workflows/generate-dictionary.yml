@@ -1,0 +1,38 @@
+name: Push File
+
+on:
+  workflow_call:
+
+jobs:
+  push-file:
+    name: Push File
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: '>=1.19.x'
+      - name: Generate Dictionary
+        run: |
+          go run ./_scripts/generate-dictionary.go
+      - name: Commit files
+        run: |
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          
+          # Check the status of the Git repository
+          status=$(git status --porcelain)
+
+          # If the repository is clean, exit with a non-zero status
+          if [ -z "$status" ]; then
+            echo "Nothing to commit, working tree clean"
+            exit 0
+          else
+            git add -A .
+            git commit -am "Generate Readme"
+          fi
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
