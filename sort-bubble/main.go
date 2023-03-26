@@ -41,6 +41,8 @@ func sortArr[T int | string](n int, arr []T) (s []T) {
 		// Basically, bubble-sort will compare the current and next index value
 		// and swap if the current more than next index value
 		for j := 0; j < n-i; j++ {
+			// > operator means ascending sort
+			// < operator means descending sort
 			if arr[j] > arr[j+1] {
 				isSwap = true
 				arr[j], arr[j+1] = arr[j+1], arr[j]
